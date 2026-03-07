@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Generador SQL VDATA</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Generador SQL VDATA</h1>
+<p>Herramienta para exploración rápida de bases de encuesta</p>
+
+</header>
+
+<div class="layout">
+
+<!-- PANEL IZQUIERDO -->
+
+<div class="panel">
+
+<h2>Lista de variables</h2>
+
+<textarea id="listaVariables"></textarea>
+
+<div class="grupoBotones">
+
+<button onclick="generarBotones()">Generar botones</button>
+<button onclick="limpiarLista()">Limpiar lista</button>
+
+</div>
+
+<div class="grupoBotones">
+
+<button onclick="seleccionarTodos()">Seleccionar todos</button>
+<button onclick="limpiarSeleccion()">Limpiar selección</button>
+<button onclick="ordenarVariables()">Ordenar</button>
+
+</div>
+
+<input type="text" id="buscador" placeholder="Buscar variable..." onkeyup="filtrar()">
+
+<div id="contador"></div>
+
+<div id="variables"></div>
+
+</div>
+
+
+<!-- PANEL CENTRAL -->
+
+<div class="panel">
+
+<h2>Filtro WHERE</h2>
+
+<input id="varFiltro" placeholder="Variable">
+<input id="valorFiltro" placeholder="Valor (ej: {_1})">
+
+<button onclick="generarFiltro()">Aplicar filtro</button>
+
+<h2>Consultas SQL</h2>
+
+<div class="grupoBotones">
+
+<button onclick="copiarTodas()">Copiar todas</button>
+<button onclick="exportarTXT()">Exportar TXT</button>
+
+</div>
+
+<div id="consultas"></div>
+
+</div>
+
+
+<!-- PANEL DERECHO -->
+
+<div class="panel">
+
+<h2>Consultas frecuentes</h2>
+
+<div id="consultasFrecuentes"></div>
+
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
