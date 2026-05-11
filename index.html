@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
-<title>Herramienta de Generación de Scripts</title>
+<title>Generador SQL VDATA</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="styles.css">
 
 </head>
 
@@ -13,91 +14,83 @@
 
 <header>
 
-<div class="nav-buttons">
-
-<a href="https://jphm22.github.io/FORMATO-TESTEO/" target="_blank">
-<button class="nav-btn">Formato Testeo</button>
-</a>
-
-<a href="https://jphm22.github.io/Herramienta-para-consultas-SQL/" target="_blank">
-<button class="nav-btn">Generador SQL</button>
-</a>
-
-<a href="https://jphm22.github.io/Cruce-de-variabales/" target="_blank">
-<button class="nav-btn">Cruce de variables</button>
-</a>
-
-<a href="https://jphm22.github.io/VariablesBinarizada/" target="_blank">
-<button class="nav-btn">Variables Binarizadas</button>
-</a>
-
-<a href="https://jphm22.github.io/Comparador_de_METADATA_pruebas/" target="_blank">
-<button class="nav-btn">Comparador Metadata</button>
-</a>
-
-
-</div>
-
-<div class="title">
-
-<h1>Herramienta de Generación de Scripts</h1>
-<p>Generador de Variables y Generador de Banner</p>
-
-</div>
+<h1>Generador SQL VDATA</h1>
+<p>Herramienta para exploración rápida de bases de encuesta</p>
 
 </header>
 
+<div class="layout">
 
-<div class="container">
+<!-- PANEL IZQUIERDO -->
 
-<!-- GENERADOR VARIABLES -->
+<div class="panel">
 
-<div class="section">
+<h2>Lista de variables</h2>
 
-<h2>Generador de Variables</h2>
+<textarea id="listaVariables"></textarea>
 
-<div class="area">
+<div class="grupoBotones">
 
-<textarea id="variablesEntrada" placeholder="Pegue aquí el formato de variables..."></textarea>
-
-<textarea id="variablesSalida" placeholder="Resultado del script..." readonly></textarea>
-
-</div>
-
-<button onclick="generarVariables()">Generar Variables</button>
+<button onclick="generarBotones()">Generar botones</button>
+<button onclick="limpiarLista()">Limpiar lista</button>
 
 </div>
 
+<div class="grupoBotones">
 
-<!-- GENERADOR BANNER -->
-
-<div class="section">
-
-<h2>Generador de Banner</h2>
-
-<div class="controls">
-
-<input id="bannerName" placeholder="Nombre del banner (ej: BANNER1)">
-
-<button onclick="generarBanner()">Generar Banner</button>
+<button onclick="seleccionarTodos()">Seleccionar todos</button>
+<button onclick="limpiarSeleccion()">Limpiar selección</button>
+<button onclick="ordenarVariables()">Ordenar</button>
 
 </div>
 
-<textarea id="bannerEntrada" placeholder="Pegue aquí las variables para el banner..."></textarea>
+<input type="text" id="buscador" placeholder="Buscar variable..." onkeyup="filtrar()">
 
-<div class="area">
+<div id="contador"></div>
 
-<textarea id="bannerEstructura" placeholder="Estructura del banner..." readonly></textarea>
+<div id="variables"></div>
 
-<textarea id="bannerLogica" placeholder="Lógica del banner..." readonly></textarea>
+</div>
+
+
+<!-- PANEL CENTRAL -->
+
+<div class="panel">
+
+<h2>Filtro WHERE</h2>
+
+<input id="varFiltro" placeholder="Variable">
+<input id="valorFiltro" placeholder="Valor (ej: {_1})">
+
+<button onclick="generarFiltro()">Aplicar filtro</button>
+
+<h2>Consultas SQL</h2>
+
+<div class="grupoBotones">
+
+<button onclick="copiarTodas()">Copiar todas</button>
+<button onclick="exportarTXT()">Exportar TXT</button>
+
+</div>
+
+<div id="consultas"></div>
+
+</div>
+
+
+<!-- PANEL DERECHO -->
+
+<div class="panel">
+
+<h2>Consultas frecuentes</h2>
+
+<div id="consultasFrecuentes"></div>
 
 </div>
 
 </div>
 
-</div>
-
-<script src="script.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
