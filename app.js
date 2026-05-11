@@ -279,7 +279,7 @@ explicacion:"Calcula la distribución de frecuencias de una variable."
 
 {
 categoria:"Frecuencia con etiquetas",
-query:"select VARIABLE_1,VARIABLE_2.format('b'),count(*) from vdata group by VARIABLE_1",
+query:"select VARIABLE_1,VARIABLE_1.format('b'),count(*) from vdata group by VARIABLE_1",
 explicacion:"Obtiene frecuencias mostrando también la etiqueta de cada categoría."
 },
 
@@ -291,7 +291,7 @@ explicacion:"Calcula la frecuencia simple y ponderada de una variable."
 
 {
 categoria:"Tabulación cruzada",
-query:"select VAR1,VAR2,count(*) from vdata group by VAR1,VAR2",
+query:"select VAR1,VAR2,count(*) AS CANTIDAD from vdata group by VAR1,VAR2",
 explicacion:"Genera una tabla cruzada de frecuencias entre dos variables."
 }
 
